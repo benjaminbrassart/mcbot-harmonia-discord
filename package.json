@@ -4,6 +4,7 @@
     "description": "",
     "main": "build/index.js",
     "scripts": {
+        "build-dev": "tsc -p tsconfig.dev.json",
         "build": "tsc",
         "start": "node build"
     },

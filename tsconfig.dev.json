@@ -8,6 +8,7 @@
         "forceConsistentCasingInFileNames": true,
         "noImplicitAny": true,
         "resolveJsonModule": true,
+        "sourceMap": true,
         "rootDir": "src/",
         "outDir": "build/",
         "moduleResolution": "Node"
