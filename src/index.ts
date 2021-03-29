@@ -10,6 +10,10 @@ import { ServerInfo } from "./server";
 const bot = new Client();
 let config: BotConfig | undefined;
 
+export function getConfig() {
+    return config;
+}
+
 export function reload(): Promise<BotConfig>;
 
 export function reload(callback: (conf: BotConfig) => void): void;
@@ -32,6 +36,13 @@ export async function reload(
     return config;
 }
 
+export async function save(): Promise<void> {
+    const path = require.resolve("./config.json");
+    await fs.writeFile(path, JSON.stringify(config), {
+        encoding: "utf-8",
+    });
+}
+
 async function fetch(): Promise<ServerInfo> {
     return (
         await Axios.get<ServerInfo>(
@@ -40,7 +51,7 @@ async function fetch(): Promise<ServerInfo> {
     ).data;
 }
 
-async function update() {
+export async function update() {
     const info = await fetch();
     let status: string;
 
