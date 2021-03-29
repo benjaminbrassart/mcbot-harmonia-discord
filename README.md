@@ -28,4 +28,4 @@ npm start
 
 ### To-do list
 
--   Add a command
+-   Use the Minecraft Server Query protocol instead of an external API
