@@ -1,17 +1,17 @@
 import { CommandContext, NodeCommand, SubCommand } from "..";
-import { reload } from "../..";
+import { update } from "../..";
 
-export default class MCCommandReload extends SubCommand {
+export default class MCCommandUpdate extends SubCommand {
     constructor(parent: NodeCommand) {
-        super("reload", ["rl"], false, parent, ["ADMINISTRATOR"]);
+        super("update", ["refresh"], false, parent, ["ADMINISTRATOR"]);
     }
 
     async execute(ctx: CommandContext): Promise<boolean> {
         if (ctx.args.length !== 0) return false;
-
         let reaction = "✅";
+
         try {
-            await reload();
+            await update();
         } catch (e) {
             reaction = "❌";
             console.error(e);
