@@ -3,7 +3,7 @@ import { getConfig, save } from "../..";
 
 export default class MCCommandServer extends SubCommand {
     constructor(parent: NodeCommand) {
-        super("server", ["host"], false, parent, ["ADMINISTRATOR"]);
+        super("server", ["host"], false, parent);
     }
 
     async execute(ctx: CommandContext): Promise<boolean> {

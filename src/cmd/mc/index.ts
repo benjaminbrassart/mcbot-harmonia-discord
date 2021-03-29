@@ -7,7 +7,7 @@ import MCCommandUpdate from "./update";
 
 export default class MCCommand extends NodeCommand {
     constructor() {
-        super("minecraft", ["mc"]);
+        super("minecraft", ["mc"], false, null, ["MANAGE_ROLES"]);
         this.subCommands.push(
             new MCCommandReload(this),
             new MCCommandServer(this),
