@@ -6,7 +6,7 @@
     "scripts": {
         "build-dev": "tsc -p tsconfig.dev.json",
         "build": "tsc",
-        "start": "node build"
+        "start": "cp -n src/config.json build/config.json; node build"
     },
     "author": "",
     "license": "ISC",

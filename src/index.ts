@@ -4,7 +4,6 @@ import fs from "fs/promises";
 import { addCommands, handleCommand } from "./cmd";
 import MCCommand from "./cmd/mc";
 import { BotConfig } from "./config";
-import "./config.json";
 import { ServerInfo } from "./server";
 
 const bot = new Client();
