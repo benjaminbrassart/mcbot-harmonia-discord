@@ -1,11 +1,6 @@
-### Build
-
-`npm run build`
-
 ### Configure
 
-1. Add a file named `config.json` in the `build/` folder.
-2. Write your configuration, as the following template shows.
+Edit the file `src/config.json`
 
 ```jsonc
 {
@@ -14,6 +9,10 @@
     "token": "" // your bot's token
 }
 ```
+
+### Build
+
+`npm run build`
 
 ### Start
 
