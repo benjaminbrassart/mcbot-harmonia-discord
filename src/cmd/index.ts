@@ -1,4 +1,10 @@
-import { Guild, GuildMember, Message, User } from "discord.js";
+import {
+    Guild,
+    GuildMember,
+    Message,
+    PermissionResolvable,
+    User,
+} from "discord.js";
 
 export class CommandContext {
     constructor(
@@ -34,7 +40,8 @@ export abstract class Command {
     constructor(
         public readonly name: string,
         public readonly aliases: string[],
-        public readonly allowBot: boolean
+        public readonly allowBot: boolean,
+        public readonly permissions: PermissionResolvable[] = []
     ) {}
 
     abstract execute(ctx: CommandContext): Promise<boolean>;
@@ -45,9 +52,10 @@ export abstract class SubCommand extends Command {
         name: string,
         aliases: string[],
         allowBot: boolean = false,
-        protected readonly parent: NodeCommand | null = null
+        protected readonly parent: NodeCommand | null = null,
+        permissions: PermissionResolvable[] = []
     ) {
-        super(name, aliases, allowBot);
+        super(name, aliases, allowBot, permissions);
     }
 }
 
@@ -58,23 +66,31 @@ export abstract class NodeCommand extends SubCommand {
         name: string,
         aliases: string[],
         allowBot: boolean = false,
-        parent: NodeCommand | null = null
+        parent: NodeCommand | null = null,
+        permissions: PermissionResolvable[] = []
     ) {
-        super(name, aliases, allowBot, parent);
+        super(name, aliases, allowBot, parent, permissions);
     }
 
     async execute(ctx: CommandContext) {
-        const name = ctx.args.shift();
         let cmd;
-        if (name) {
+        if (ctx.args[0]) {
             cmd = this.subCommands.find((cmd) =>
-                [...cmd.aliases, cmd.name].includes(name)
+                [...cmd.aliases, cmd.name].includes(ctx.args[0])
             );
-            if (cmd && (cmd.allowBot || !ctx.user.bot)) {
-                return cmd.execute(ctx.child);
+            if (cmd) {
+                if (
+                    (cmd.allowBot || !ctx.user.bot) &&
+                    cmd.permissions.every((p) => ctx.member.hasPermission(p))
+                )
+                    return cmd.execute(ctx.child);
+                else {
+                    await ctx.message.react("🙅").catch(console.error);
+                    return true;
+                }
             }
         }
-        this.executeDefault(ctx);
+        await this.executeDefault(ctx);
         return true;
     }
 
@@ -104,6 +120,6 @@ export async function handleCommand(message: Message) {
                 ) >= 0
         );
         if (cmd && (cmd.allowBot || !message.author.bot))
-            cmd.execute(new CommandContext(message, label, args));
+            await cmd.execute(new CommandContext(message, label, args));
     }
 }
