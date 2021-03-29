@@ -3,7 +3,7 @@ import { reload } from "../..";
 
 export default class MCCommandReload extends SubCommand {
     constructor(parent: NodeCommand) {
-        super("reload", ["rl"], false, parent);
+        super("reload", ["rl"], "Recharger la configuration", false, parent);
     }
 
     async execute(ctx: CommandContext): Promise<boolean> {

@@ -3,7 +3,13 @@ import { getConfig } from "../..";
 
 export default class MCCommandInfo extends SubCommand {
     constructor(parent: NodeCommand) {
-        super("info", [], false, parent);
+        super(
+            "info",
+            [],
+            "Afficher le nom et le port du serveur surveillé",
+            false,
+            parent
+        );
     }
 
     async execute(ctx: CommandContext): Promise<boolean> {

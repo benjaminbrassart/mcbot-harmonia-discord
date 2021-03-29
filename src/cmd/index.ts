@@ -39,8 +39,9 @@ export class CommandContext {
 export abstract class Command {
     constructor(
         public readonly name: string,
-        public readonly aliases: string[],
-        public readonly allowBot: boolean,
+        public readonly aliases: string[] = [],
+        public readonly description: string = "",
+        public readonly allowBot: boolean = false,
         public readonly permissions: PermissionResolvable[] = []
     ) {}
 
@@ -51,11 +52,12 @@ export abstract class SubCommand extends Command {
     constructor(
         name: string,
         aliases: string[],
+        description: string = "",
         allowBot: boolean = false,
         protected readonly parent: NodeCommand | null = null,
         permissions: PermissionResolvable[] = []
     ) {
-        super(name, aliases, allowBot, permissions);
+        super(name, aliases, description, allowBot, permissions);
     }
 }
 
@@ -65,11 +67,12 @@ export abstract class NodeCommand extends SubCommand {
     constructor(
         name: string,
         aliases: string[],
+        description: string = "",
         allowBot: boolean = false,
         parent: NodeCommand | null = null,
         permissions: PermissionResolvable[] = []
     ) {
-        super(name, aliases, allowBot, parent, permissions);
+        super(name, aliases, description, allowBot, parent, permissions);
     }
 
     async execute(ctx: CommandContext) {
@@ -94,7 +97,7 @@ export abstract class NodeCommand extends SubCommand {
         return true;
     }
 
-    async executeDefault(ctx: CommandContext): Promise<void> {}
+    executeDefault(ctx: CommandContext): Promise<void> | void {}
 }
 
 export const COMMAND_REGEX = /^!(.+)(?: (.+)+)?/;

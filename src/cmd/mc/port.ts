@@ -3,7 +3,13 @@ import { getConfig, save } from "../..";
 
 export default class MCCommandPort extends SubCommand {
     constructor(parent: NodeCommand) {
-        super("port", [], false, parent);
+        super(
+            "port",
+            [],
+            "Afficher ou définir le port du serveur à surveiller",
+            false,
+            parent
+        );
     }
 
     async execute(ctx: CommandContext): Promise<boolean> {

@@ -3,7 +3,13 @@ import { getConfig, save } from "../..";
 
 export default class MCCommandServer extends SubCommand {
     constructor(parent: NodeCommand) {
-        super("server", ["host"], false, parent);
+        super(
+            "server",
+            ["host"],
+            "Afficher ou définir le serveur à surveiller",
+            false,
+            parent
+        );
     }
 
     async execute(ctx: CommandContext): Promise<boolean> {

@@ -3,7 +3,13 @@ import { update } from "../..";
 
 export default class MCCommandUpdate extends SubCommand {
     constructor(parent: NodeCommand) {
-        super("update", ["refresh"], false, parent);
+        super(
+            "update",
+            ["refresh"],
+            "Forcer la mise à jour des données",
+            false,
+            parent
+        );
     }
 
     async execute(ctx: CommandContext): Promise<boolean> {
