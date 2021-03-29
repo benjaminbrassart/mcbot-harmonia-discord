@@ -4,7 +4,7 @@
 
 ### Configure
 
-```json
+```jsonc
 {
     "host": "mc.hypixel.net", // the host of the server
     "port": 25565, // the port of the server
