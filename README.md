@@ -12,7 +12,13 @@ Edit the file `src/config.json`
 
 ### Build
 
-`npm run build`
+```sh
+# install dependencies
+npm install
+
+# transpile .ts into .js files
+npm run build
+```
 
 ### Start
 
