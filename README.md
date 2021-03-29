@@ -22,7 +22,9 @@ npm run build
 
 ### Start
 
-`npm start`
+```sh
+npm start
+```
 
 ### To-do list
 
