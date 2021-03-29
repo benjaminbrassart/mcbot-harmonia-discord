@@ -4,6 +4,9 @@
 
 ### Configure
 
+1. Add a file named `config.json` in the `build/` folder.
+2. Write your configuration, as the following template shows.
+
 ```jsonc
 {
     "host": "mc.hypixel.net", // the host of the server
