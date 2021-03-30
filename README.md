@@ -14,7 +14,7 @@ Edit the file `src/config.json`
 
 ```sh
 # install dependencies
-npm install
+npm install --only=prod
 
 # transpile .ts into .js files
 npm run build
