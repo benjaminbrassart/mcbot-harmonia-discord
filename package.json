@@ -4,9 +4,8 @@
     "description": "",
     "main": "build/index.js",
     "scripts": {
-        "build-dev": "tsc -p tsconfig.dev.json",
         "build": "tsc",
-        "start": "cp -n src/config.json build/config.json; node build"
+        "start": "node build/index.js"
     },
     "author": "",
     "license": "ISC",
