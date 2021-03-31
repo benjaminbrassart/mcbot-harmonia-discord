@@ -4,7 +4,7 @@
     "description": "",
     "main": "build/index.js",
     "scripts": {
-        "build": "tsc",
+        "build": "tsc && cp -n src/config.json build/config.json",
         "start": "node build/index.js"
     },
     "author": "",
