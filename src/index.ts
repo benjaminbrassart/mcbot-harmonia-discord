@@ -1,10 +1,10 @@
+import { addCommands, handleCommand } from "@/cmd";
+import MCCommand from "@/cmd/mc";
+import { BotConfig } from "@/config";
+import { ServerInfo } from "@/server";
 import Axios from "axios";
 import { Client } from "discord.js";
 import fs from "fs/promises";
-import { addCommands, handleCommand } from "./cmd";
-import MCCommand from "./cmd/mc";
-import { BotConfig } from "./config";
-import { ServerInfo } from "./server";
 
 const bot = new Client();
 let config: BotConfig | undefined;

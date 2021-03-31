@@ -10,6 +10,12 @@
         "resolveJsonModule": true,
         "rootDir": "src/",
         "outDir": "build/",
-        "moduleResolution": "Node"
+        "moduleResolution": "Node",
+        "baseUrl": "./",
+        "paths": {
+            "@": ["src/"],
+            "@/": ["src/"],
+            "@/*": ["src/*"]
+        }
     }
 }

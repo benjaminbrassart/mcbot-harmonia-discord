@@ -9,7 +9,9 @@
             "runtimeArgs": [
                 "--nolazy",
                 "-r",
-                "ts-node/register/transpile-only"
+                "ts-node/register/transpile-only",
+                "-r",
+                "tsconfig-paths/register"
             ],
             "args": ["src/index.ts"],
             "cwd": "${workspaceRoot}",

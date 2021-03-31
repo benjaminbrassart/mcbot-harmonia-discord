@@ -1,5 +1,5 @@
-import { CommandContext, NodeCommand, SubCommand } from "..";
-import { update } from "../..";
+import { update } from "@";
+import { CommandContext, NodeCommand, SubCommand } from "@/cmd";
 
 export default class MCCommandUpdate extends SubCommand {
     constructor(parent: NodeCommand) {
