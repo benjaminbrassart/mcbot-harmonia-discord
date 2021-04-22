@@ -51,23 +51,28 @@ async function fetch(): Promise<ServerInfo> {
 }
 
 export async function update() {
-    const info = await fetch();
-    let status: string;
-
-    if (info.ip) {
-        bot.user?.setStatus("online");
-        status = `${info.players.online} joueur${
-            info.players.online > 1 ? "s" : ""
-        } sur ${info.players.max}`;
-    } else {
-        bot.user?.setStatus("dnd");
-        status = "un serveur offline";
+    try {
+        const info = await fetch();
+        let status: string;
+    
+        if (info.ip) {
+            bot.user?.setStatus("online");
+            status = `${info.players.online} joueur${
+                info.players.online > 1 ? "s" : ""
+            } sur ${info.players.max}`;
+        } else {
+            bot.user?.setStatus("dnd");
+            status = "un serveur offline";
+        }
+    
+        bot.user?.setActivity({
+            name: status,
+            type: "WATCHING",
+        });
+    } catch (e) {
+        console.error("An error occurred while fetching server status on web service. Printing here.");
+        console.error(e.response);
     }
-
-    bot.user?.setActivity({
-        name: status,
-        type: "WATCHING",
-    });
 }
 
 reload((conf) => bot.login(conf.token));
