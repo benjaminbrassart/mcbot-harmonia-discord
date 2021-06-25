@@ -1,9 +1,9 @@
-import { CommandContext, NodeCommand } from "@/cmd";
-import MCCommandInfo from "@/cmd/mc/info";
-import MCCommandPort from "@/cmd/mc/port";
-import MCCommandReload from "@/cmd/mc/reload";
-import MCCommandServer from "@/cmd/mc/server";
-import MCCommandUpdate from "@/cmd/mc/update";
+import { CommandContext, NodeCommand } from "..";
+import MCCommandInfo from "./info";
+import MCCommandPort from "./port";
+import MCCommandReload from "./reload";
+import MCCommandServer from "./server";
+import MCCommandUpdate from "./update";
 
 export default class MCCommand extends NodeCommand {
     constructor() {

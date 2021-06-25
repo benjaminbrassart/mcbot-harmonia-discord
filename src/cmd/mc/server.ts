@@ -1,5 +1,5 @@
-import { getConfig, save } from "@";
-import { CommandContext, NodeCommand, SubCommand } from "@/cmd";
+import { getConfig, save } from "../..";
+import { CommandContext, NodeCommand, SubCommand } from "..";
 
 export default class MCCommandServer extends SubCommand {
     constructor(parent: NodeCommand) {

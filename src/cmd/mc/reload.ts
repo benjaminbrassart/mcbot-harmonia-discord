@@ -1,5 +1,5 @@
-import { reload } from "@";
-import { CommandContext, NodeCommand, SubCommand } from "@/cmd";
+import { reload } from "../..";
+import { CommandContext, NodeCommand, SubCommand } from "..";
 
 export default class MCCommandReload extends SubCommand {
     constructor(parent: NodeCommand) {
